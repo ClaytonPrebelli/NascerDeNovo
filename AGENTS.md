@@ -10,20 +10,21 @@
 - npm install com `--ignore-scripts` concluído, mas lmdb não compilou nativamente (falta VS C++)
 
 ## Pendências
-- [ ] Rodar `ng build` para verificar erros de compilação
-- [ ] git init e configurar remote (origin: git@github.com:claytonprebelli/NascerDeNovo.git)
-- [ ] Fazer primeiro commit
-- [ ] Push para GitHub
-- [ ] Deploy GitHub Pages (ng deploy ou manual)
+- [x] Build production OK (190KB, 34s)
+- [x] git init + remote (origin: git@github.com:claytonprebelli/NascerDeNovo.git)
+- [x] Todos componentes criados e compilando
+- [x] package-lock.json adicionado e commitado
+- [x] Push para GitHub
+- [x] Deploy GitHub Pages → https://claytonprebelli.github.io/NascerDeNovo
 - [ ] Colocar imagens reais nos placeholders
 - [ ] Formulário de contato funcional (enviar e-mail)
 - [ ] Animações de scroll (opcional)
-- [ ] Testar build production e corrigir warnings de budget
 
 ## Comandos Úteis
 ```powershell
 ng serve              # dev server
 ng build              # build production
+npx angular-cli-ghpages --dir="dist\nascer-de-novo\browser"  # deploy gh-pages
 ```
 
 ## Problemas Conhecidos
