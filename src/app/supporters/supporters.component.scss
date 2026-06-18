@@ -1,0 +1,115 @@
+.supporters {
+  background: #fff;
+}
+
+.supporters-header {
+  text-align: center;
+  margin-bottom: 40px;
+  .section-subtitle { margin: 0 auto; }
+}
+
+.supporters-filter {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  button {
+    padding: 10px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: #FAF8F5;
+    color: #6B6B6B;
+    border: 1.5px solid rgba(0,0,0,0.04);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover { background: rgba(212,32,39,0.04); color: #D42027; }
+
+    &.active {
+      background: #D42027;
+      color: #fff;
+      border-color: #D42027;
+    }
+  }
+}
+
+.supporters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.supporter-card {
+  text-align: center;
+  padding: 28px 16px;
+  background: #FAF8F5;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(212,32,39,0.06);
+    transform: translateY(-2px);
+  }
+}
+
+.supporter-avatar {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.02);
+  border-radius: 50%;
+  margin: 0 auto 14px;
+}
+
+.supporter-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: #1C1C1E;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.supporter-type {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #D42027;
+  margin-bottom: 4px;
+}
+
+.supporter-since {
+  display: block;
+  font-size: 0.72rem;
+  color: #6B6B6B;
+}
+
+.supporters-cta {
+  text-align: center;
+  margin-top: 56px;
+  padding: 40px;
+  background: #FAF8F5;
+  border-radius: 16px;
+
+  p {
+    font-size: 1rem;
+    color: #1C1C1E;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .supporters-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .supporters-filter { flex-wrap: wrap; }
+  .supporters-filter button { flex: 1; min-width: 120px; text-align: center; }
+}

@@ -9,6 +9,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { LeadershipComponent } from './leadership/leadership.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { SupportersComponent } from './supporters/supporters.component';
+import { FormsComponent } from './forms/forms.component';
 import { DonationComponent } from './donation/donation.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,7 +21,7 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     HeaderComponent, HeroComponent, AboutComponent, MvvComponent,
     AreasComponent, NumbersComponent, CoursesComponent, LeadershipComponent,
-    TestimonialsComponent, GalleryComponent, DonationComponent,
+    TestimonialsComponent, GalleryComponent, SupportersComponent, FormsComponent, DonationComponent,
     ContactComponent, FooterComponent,
   ],
   templateUrl: './app.component.html',

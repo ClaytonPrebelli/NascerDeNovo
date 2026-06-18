@@ -1,0 +1,126 @@
+.forms {
+  background: #FAF8F5;
+}
+
+.forms-header {
+  text-align: center;
+  margin-bottom: 56px;
+  .section-subtitle { margin: 0 auto; }
+}
+
+.forms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &.active {
+    box-shadow: 0 8px 32px rgba(212,32,39,0.08);
+    border-color: rgba(212,32,39,0.12);
+  }
+}
+
+.form-card-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s;
+
+  &:hover { background: rgba(212,32,39,0.02); }
+
+  h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #1C1C1E;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 0.78rem;
+    color: #6B6B6B;
+  }
+}
+
+.form-icon {
+  font-size: 1.5rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212,32,39,0.06);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.form-toggle {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #D42027;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.form-card-body {
+  padding: 0 24px 24px;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0,0,0,0.04);
+}
+
+.form-content input,
+.form-content select,
+.form-content textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #1C1C1E;
+  background: #FAF8F5;
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+
+  &::placeholder { color: #9E9E9E; }
+
+  &:focus {
+    border-color: #D42027;
+    box-shadow: 0 0 0 3px rgba(212,32,39,0.06);
+  }
+}
+
+.form-content textarea { resize: vertical; min-height: 80px; }
+
+.form-content select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%236B6B6B'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .forms-grid { grid-template-columns: 1fr; }
+}
