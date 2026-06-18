@@ -1,0 +1,63 @@
+.areas {
+  background: #fff;
+}
+
+.areas-header {
+  text-align: center;
+  margin-bottom: 64px;
+
+  .section-subtitle {
+    margin: 0 auto;
+  }
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.area-card {
+  padding: 36px 32px;
+  border-radius: 12px;
+  background: #FAF8F5;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s ease;
+
+  &:hover {
+    background: #fff;
+    border-color: rgba(212,32,39,0.1);
+    box-shadow: 0 8px 32px rgba(212,32,39,0.08);
+    transform: translateY(-3px);
+  }
+}
+
+.area-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212,32,39,0.06);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.area-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #1C1C1E;
+  margin-bottom: 12px;
+}
+
+.area-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #6B6B6B;
+}
+
+@media (max-width: 768px) {
+  .areas-grid { grid-template-columns: 1fr; }
+  .areas-header { margin-bottom: 40px; }
+  .area-card { padding: 28px 24px; }
+}

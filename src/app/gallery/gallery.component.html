@@ -1,0 +1,24 @@
+<section id="galeria" class="section gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <span class="section-tag">Galeria</span>
+      <h2 class="section-title">Nossas <span>Missões</span></h2>
+      <p class="section-subtitle">
+        Momentos que marcam nossa jornada missionária ao redor do mundo.
+      </p>
+    </div>
+    <div class="gallery-grid">
+      @for (img of images; track img.id; let i = $index) {
+        <div
+          class="gallery-item"
+          [class.expanded]="expandedIndex === i"
+          (click)="toggleExpanded(i)"
+        >
+          <div class="gallery-placeholder" [style.background]="img.color">
+            <span>{{ img.label }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
