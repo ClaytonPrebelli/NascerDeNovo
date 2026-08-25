@@ -62,7 +62,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/NascerDeNovo/",
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
