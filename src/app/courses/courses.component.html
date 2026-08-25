@@ -45,7 +45,7 @@
         <div class="program-form">
           <h4>Inscrição</h4>
           <p class="form-intro">Preencha seus dados para fazer parte desta missão:</p>
-          <form (submit)="onSubmitEmbaixadores($event)">
+          <form #embaixadoresForm (ngSubmit)="sendEmbaixadores()">
             <div class="form-field">
               <label>Nome completo</label>
               <input type="text" [(ngModel)]="embaixadores.nome" name="nome" placeholder="Seu nome completo" required>
@@ -78,16 +78,24 @@
               <label>Área em que deseja servir</label>
               <select [(ngModel)]="embaixadores.area" name="area" required>
                 <option value="" disabled selected>Selecione</option>
-                <option value="evangelismo">Evangelismo</option>
-                <option value="missoes">Missões</option>
-                <option value="implantacao">Implantação de Igrejas</option>
-                <option value="formacao">Formação Missionária</option>
-                <option value="sociais">Ações Sociais</option>
-                <option value="familias">Apoio às Famílias</option>
+                <option value="Evangelismo">Evangelismo</option>
+                <option value="Missões">Missões</option>
+                <option value="Implantação de Igrejas">Implantação de Igrejas</option>
+                <option value="Formação Missionária">Formação Missionária</option>
+                <option value="Ações Sociais">Ações Sociais</option>
+                <option value="Apoio às Famílias">Apoio às Famílias</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">Enviar Inscrição</button>
+            <button type="submit" class="btn btn-primary btn-full" [disabled]="sendingEmbaixadores">
+              {{ sendingEmbaixadores ? 'Enviando...' : 'Enviar Inscrição' }}
+            </button>
           </form>
+          @if (sentEmbaixadores) {
+            <div class="form-feedback success">Inscrição enviada com sucesso! Entraremos em contato.</div>
+          }
+          @if (errorEmbaixadores) {
+            <div class="form-feedback error">Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.</div>
+          }
         </div>
       </div>
     </div>
@@ -126,7 +134,7 @@
         <div class="program-form">
           <h4>Inscrição na Academia</h4>
           <p class="form-intro">Preencha seus dados para iniciar seu processo de integração:</p>
-          <form (submit)="onSubmitAcademia($event)">
+          <form #academiaForm (ngSubmit)="sendAcademia()">
             <div class="form-field">
               <label>Nome completo</label>
               <input type="text" [(ngModel)]="academia.nome" name="nome" placeholder="Seu nome completo" required>
@@ -145,8 +153,16 @@
               <label>Igreja/Ministério</label>
               <input type="text" [(ngModel)]="academia.igreja" name="igreja" placeholder="Nome da igreja ou ministério" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">Enviar Inscrição</button>
+            <button type="submit" class="btn btn-primary btn-full" [disabled]="sendingAcademia">
+              {{ sendingAcademia ? 'Enviando...' : 'Enviar Inscrição' }}
+            </button>
           </form>
+          @if (sentAcademia) {
+            <div class="form-feedback success">Inscrição enviada com sucesso! Entraremos em contato.</div>
+          }
+          @if (errorAcademia) {
+            <div class="form-feedback error">Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.</div>
+          }
         </div>
       </div>
     </div>

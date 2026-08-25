@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-courses',
@@ -9,6 +10,17 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './courses.component.scss',
 })
 export class CoursesComponent {
+  @ViewChild('embaixadoresForm') embaixadoresForm!: ElementRef<HTMLFormElement>;
+  @ViewChild('academiaForm') academiaForm!: ElementRef<HTMLFormElement>;
+
+  sendingEmbaixadores = false;
+  sentEmbaixadores = false;
+  errorEmbaixadores = false;
+
+  sendingAcademia = false;
+  sentAcademia = false;
+  errorAcademia = false;
+
   embaixadores = {
     nome: '',
     cidade: '',
@@ -26,11 +38,68 @@ export class CoursesComponent {
     igreja: '',
   };
 
-  onSubmitEmbaixadores(event: Event) {
-    event.preventDefault();
+  sendEmbaixadores() {
+    if (this.sendingEmbaixadores) return;
+    this.sendingEmbaixadores = true;
+    this.sentEmbaixadores = false;
+    this.errorEmbaixadores = false;
+
+    emailjs
+      .send('service_a2etvgi', 'template_2ppjn0a', {
+        user_name: this.embaixadores.nome,
+        user_email: this.embaixadores.email,
+        subject: 'Inscrição — Embaixadores do Reino',
+        message: [
+          `Nome: ${this.embaixadores.nome}`,
+          `Cidade: ${this.embaixadores.cidade}`,
+          `WhatsApp: ${this.embaixadores.whatsapp}`,
+          `E-mail: ${this.embaixadores.email}`,
+          `Igreja: ${this.embaixadores.igreja}`,
+          `Função: ${this.embaixadores.funcao}`,
+          `Área: ${this.embaixadores.area}`,
+        ].join('\n'),
+      }, { publicKey: '5hCqPusZna0ARKthq' })
+      .then(
+        () => {
+          this.sendingEmbaixadores = false;
+          this.sentEmbaixadores = true;
+          this.embaixadores = { nome: '', cidade: '', whatsapp: '', email: '', igreja: '', funcao: '', area: '' };
+        },
+        () => {
+          this.sendingEmbaixadores = false;
+          this.errorEmbaixadores = true;
+        }
+      );
   }
 
-  onSubmitAcademia(event: Event) {
-    event.preventDefault();
+  sendAcademia() {
+    if (this.sendingAcademia) return;
+    this.sendingAcademia = true;
+    this.sentAcademia = false;
+    this.errorAcademia = false;
+
+    emailjs
+      .send('service_a2etvgi', 'template_2ppjn0a', {
+        user_name: this.academia.nome,
+        user_email: this.academia.email,
+        subject: 'Inscrição — Academia Missionária',
+        message: [
+          `Nome: ${this.academia.nome}`,
+          `E-mail: ${this.academia.email}`,
+          `WhatsApp: ${this.academia.whatsapp}`,
+          `Igreja: ${this.academia.igreja}`,
+        ].join('\n'),
+      }, { publicKey: '5hCqPusZna0ARKthq' })
+      .then(
+        () => {
+          this.sendingAcademia = false;
+          this.sentAcademia = true;
+          this.academia = { nome: '', email: '', whatsapp: '', igreja: '' };
+        },
+        () => {
+          this.sendingAcademia = false;
+          this.errorAcademia = true;
+        }
+      );
   }
 }

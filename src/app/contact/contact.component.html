@@ -10,12 +10,19 @@
 
     <div class="contact-grid">
       <div class="contact-info">
-        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="contact-whatsapp">
+        <a href="https://wa.me/5586999812082" target="_blank" rel="noopener noreferrer" class="contact-whatsapp">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
             <path d="M11 0C4.925 0 0 4.925 0 11C0 13.475 0.825 15.675 2.2 17.6L1.375 21.175L5.225 19.525C7.15 21.175 9.35 22 11 22C17.075 22 22 17.075 22 11S17.075 0 11 0Z" fill="#25D366"/>
             <path d="M16.5 15.125L14.3 14.025C14.025 13.8875 13.75 13.8875 13.475 14.1625L12.925 14.9875C12.375 14.575 11.55 14.025 11 13.475C10.45 12.925 9.9 12.1 9.4875 11.55L10.3125 11C10.5875 10.725 10.5875 10.45 10.45 10.175L9.35 7.975C9.2125 7.5625 8.9375 7.5625 8.6625 7.5625H7.5625C7.2875 7.5625 6.875 7.7 6.7375 8.1125C6.1875 9.4875 6.7375 11.275 8.25 12.7875C9.9 14.4375 11.9625 15.4 13.75 14.9875C14.1625 14.85 14.3 14.575 14.3 14.1625V13.0625C14.3 12.7875 14.3 12.5125 14.025 12.375Z" fill="white"/>
           </svg>
-          <span>(11) 99999-9999</span>
+          <span>(86) 99981-2082</span>
+        </a>
+        <a href="https://wa.me/5511998927196" target="_blank" rel="noopener noreferrer" class="contact-whatsapp">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 0C4.925 0 0 4.925 0 11C0 13.475 0.825 15.675 2.2 17.6L1.375 21.175L5.225 19.525C7.15 21.175 9.35 22 11 22C17.075 22 22 17.075 22 11S17.075 0 11 0Z" fill="#25D366"/>
+            <path d="M16.5 15.125L14.3 14.025C14.025 13.8875 13.75 13.8875 13.475 14.1625L12.925 14.9875C12.375 14.575 11.55 14.025 11 13.475C10.45 12.925 9.9 12.1 9.4875 11.55L10.3125 11C10.5875 10.725 10.5875 10.45 10.45 10.175L9.35 7.975C9.2125 7.5625 8.9375 7.5625 8.6625 7.5625H7.5625C7.2875 7.5625 6.875 7.7 6.7375 8.1125C6.1875 9.4875 6.7375 11.275 8.25 12.7875C9.9 14.4375 11.9625 15.4 13.75 14.9875C14.1625 14.85 14.3 14.575 14.3 14.1625V13.0625C14.3 12.7875 14.3 12.5125 14.025 12.375Z" fill="white"/>
+          </svg>
+          <span>(11) 99892-7196</span>
         </a>
 
         <div class="contact-details">
@@ -29,18 +36,6 @@
             <div>
               <strong>E-mail</strong>
               <a href="mailto:contato&#64;projetonascerdenovo.com.br" class="contact-email-link">contato&#64;projetonascerdenovo.com.br</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M18 14V16C18 17.1 17.1 18 16 18H4C2.9 18 2 17.1 2 16V14M10 11V2M10 2L14 6M10 2L6 6" stroke="#D42027" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Endereço</strong>
-              <span>Rua Missionários, 123 — Centro</span>
-              <span>CEP: 01000-000 — São Paulo, SP</span>
             </div>
           </div>
           <div class="contact-item">
@@ -92,16 +87,22 @@
       </div>
 
       <div class="contact-form">
-        <form action="#" method="post" class="form">
+        <form #contactForm (ngSubmit)="sendEmail()" class="form">
           <div class="form-row">
-            <input type="text" placeholder="Seu nome" required>
-            <input type="email" placeholder="Seu e-mail" required>
+            <input type="text" name="user_name" [(ngModel)]="form.user_name" placeholder="Seu nome" required>
+            <input type="email" name="user_email" [(ngModel)]="form.user_email" placeholder="Seu e-mail" required>
           </div>
-          <input type="text" placeholder="Assunto">
-          <textarea rows="5" placeholder="Sua mensagem" required></textarea>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            Enviar Mensagem
+          <input type="text" name="subject" [(ngModel)]="form.subject" placeholder="Assunto">
+          <textarea rows="5" name="message" [(ngModel)]="form.message" placeholder="Sua mensagem" required></textarea>
+          <button type="submit" class="btn btn-primary btn-submit" [disabled]="sending" style="width: 100%; justify-content: center;">
+            {{ sending ? 'Enviando...' : 'Enviar Mensagem' }}
           </button>
+          @if (sent) {
+            <div class="form-feedback success">Mensagem enviada com sucesso! Entraremos em contato.</div>
+          }
+          @if (error) {
+            <div class="form-feedback error">Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.</div>
+          }
         </form>
       </div>
     </div>

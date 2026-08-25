@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 export interface FormField {
   label: string;
@@ -19,12 +21,16 @@ export interface FormConfig {
 @Component({
   selector: 'app-forms',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss',
 })
 export class FormsComponent {
   activeForm: string | null = null;
+  formData: Record<string, Record<string, string>> = {};
+  sending: Record<string, boolean> = {};
+  sent: Record<string, boolean> = {};
+  error: Record<string, boolean> = {};
 
   forms: FormConfig[] = [
     {
@@ -118,6 +124,61 @@ export class FormsComponent {
   ];
 
   toggleForm(id: string) {
+    if (!this.formData[id]) {
+      this.formData[id] = {};
+      this.forms.find(f => f.id === id)?.fields.forEach(field => {
+        const key = field.label.toLowerCase().replace(/ /g, '_');
+        this.formData[id][key] = '';
+      });
+    }
     this.activeForm = this.activeForm === id ? null : id;
+  }
+
+  getFieldKey(field: FormField): string {
+    return field.label.toLowerCase().replace(/ /g, '_');
+  }
+
+  sendForm(formConfig: FormConfig) {
+    const id = formConfig.id;
+    if (this.sending[id]) return;
+    this.sending[id] = true;
+    this.sent[id] = false;
+    this.error[id] = false;
+
+    const data = this.formData[id] || {};
+    const nomeKey = this.getFieldKey(formConfig.fields[0]);
+    const userName = data[nomeKey] || '';
+
+    const userEmailKey = formConfig.fields.find(f => f.type === 'email');
+    const userEmail = userEmailKey ? data[this.getFieldKey(userEmailKey)] : '';
+
+    const messageLines = formConfig.fields.map(field => {
+      const key = this.getFieldKey(field);
+      const value = data[key] || '';
+      return `${field.label}: ${value}`;
+    });
+
+    emailjs
+      .send('service_a2etvgi', 'template_2ppjn0a', {
+        user_name: userName,
+        user_email: userEmail,
+        subject: formConfig.title,
+        message: messageLines.join('\n'),
+      }, { publicKey: '5hCqPusZna0ARKthq' })
+      .then(
+        () => {
+          this.sending[id] = false;
+          this.sent[id] = true;
+          this.formData[id] = {};
+          this.forms.find(f => f.id === id)?.fields.forEach(field => {
+            const key = this.getFieldKey(field);
+            this.formData[id][key] = '';
+          });
+        },
+        () => {
+          this.sending[id] = false;
+          this.error[id] = true;
+        }
+      );
   }
 }
