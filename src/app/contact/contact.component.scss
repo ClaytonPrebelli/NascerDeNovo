@@ -61,6 +61,19 @@
   }
 }
 
+.contact-email-link {
+  display: block;
+  font-size: 0.82rem;
+  color: #D42027;
+  line-height: 1.5;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #8B1A1A;
+    text-decoration: underline;
+  }
+}
+
 .contact-icon {
   width: 40px;
   height: 40px;

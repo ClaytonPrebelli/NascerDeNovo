@@ -54,6 +54,25 @@
   }
 }
 
+.gallery-notice {
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #6B6B6B;
+  padding: 14px 24px;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  strong {
+    color: #1C1C1E;
+  }
+}
+
 .gallery-video {
   max-width: 800px;
   margin: 0 auto;
