@@ -45,10 +45,13 @@
 
       <div id="pix-section" class="donation-methods">
         <div class="donation-pix">
-          <h4>PIX</h4>
+          <h4>PIX (CNPJ)</h4>
           <p>Contribua via PIX usando nossa chave:</p>
           <div class="donation-pix-key">
-            <span>contato&#64;nascerdenovo.com.br</span>
+            <span>01020915000121</span>
+            <button class="btn-copy" (click)="copyPixKey()" [class.copied]="copied">
+              {{ copied ? '✓ Copiado' : 'Copiar' }}
+            </button>
           </div>
         </div>
 
@@ -57,21 +60,22 @@
           <div class="bank-grid">
             <div class="bank-item">
               <strong>Banco</strong>
-              <span>Banco do Brasil — 001</span>
+              <span>Banco Cora</span>
             </div>
             <div class="bank-item">
               <strong>Agência</strong>
-              <span>0000-0</span>
+              <span>0001</span>
             </div>
             <div class="bank-item">
               <strong>Conta Corrente</strong>
-              <span>00000-0</span>
+              <span>5155645-0</span>
             </div>
             <div class="bank-item">
               <strong>Responsável</strong>
-              <span>Associação Agência Missionária Nascer de Novo</span>
+              <span>Grupo Empresarial Mouzinho</span>
             </div>
           </div>
+          <p class="bank-note">Obs: O Grupo Mouzinho é o principal mantenedor do Projeto Nascer de Novo.</p>
         </div>
       </div>
 

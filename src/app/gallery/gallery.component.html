@@ -1,9 +1,9 @@
 <section id="galeria" class="section gallery">
   <div class="container">
     <div class="gallery-header">
-      <span class="section-tag">Galeria</span>
+      <span class="section-tag">Nossas Missões</span>
       <h2 class="section-title">Nossas <span>Missões</span></h2>
-      <p class="section-subtitle">
+      <p class="gallery-subtitle">
         Momentos que marcam nossa jornada missionária ao redor do mundo.
       </p>
     </div>
@@ -14,11 +14,15 @@
           [class.expanded]="expandedIndex === i"
           (click)="toggleExpanded(i)"
         >
-          <div class="gallery-placeholder" [style.background]="img.color">
-            <span>{{ img.label }}</span>
-          </div>
+          <img [src]="img.src" [alt]="img.alt" class="gallery-img" loading="lazy">
         </div>
       }
+    </div>
+    <div class="gallery-video">
+      <video controls preload="metadata">
+        <source [src]="videoSrc" type="video/mp4">
+        Seu navegador não suporta vídeos.
+      </video>
     </div>
   </div>
 </section>
