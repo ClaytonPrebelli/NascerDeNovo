@@ -19,7 +19,7 @@ export class SupportersComponent {
 
   supporters: Supporter[] = [
     { name: 'Imobiliária Mouzinho', type: 'empresa', since: '1999' },
-    { name: 'SL Engenharia', type: 'empresa', since: '2024' },
+    { name: 'SL Engenharia e Neurogestão Empresarial', type: 'empresa', since: '2024' },
    
   ];
 
