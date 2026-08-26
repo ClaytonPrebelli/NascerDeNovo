@@ -206,6 +206,186 @@
   margin-top: 8px;
 }
 
+.curriculum {
+  margin: 24px 0;
+}
+
+.curriculum-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #1C1C1E;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(212,32,39,0.15);
+}
+
+.curriculum-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.curriculum-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  strong {
+    font-size: 0.88rem;
+    color: #1C1C1E;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 0.78rem;
+    color: #6B6B6B;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.curriculum-number {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212,32,39,0.08);
+  color: #D42027;
+  font-weight: 700;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  margin-top: 2px;
+}
+
+.curriculum-hours {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 10px;
+  background: rgba(201,168,76,0.1);
+  color: #B8932E;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.curriculum-summary {
+  margin-top: 20px;
+  border-top: 2px solid rgba(0,0,0,0.06);
+  padding-top: 16px;
+}
+
+.curriculum-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+
+  strong {
+    font-size: 0.88rem;
+    color: #1C1C1E;
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #6B6B6B;
+  }
+
+  &.highlight {
+    background: rgba(212,32,39,0.06);
+    border: 1px solid rgba(212,32,39,0.12);
+
+    strong { color: #D42027; }
+    span { color: #D42027; font-size: 1rem; }
+  }
+}
+
+.accordion {
+  margin: 20px 0;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(212,32,39,0.04);
+  border: none;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1C1C1E;
+  transition: background 0.3s ease;
+
+  &:hover { background: rgba(212,32,39,0.08); }
+
+  svg {
+    transition: transform 0.3s ease;
+    color: #D42027;
+    &.rotated { transform: rotate(180deg); }
+  }
+}
+
+.accordion-body {
+  padding: 20px;
+  background: #fff;
+}
+
+.curriculum-section {
+  margin: 24px 0;
+
+  h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #1C1C1E;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.6;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 13px;
+        width: 8px;
+        height: 8px;
+        background: #D42027;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.7;
+  }
+}
+
 @media (max-width: 968px) {
   .program-content { grid-template-columns: 1fr; gap: 32px; }
   .program-block { padding: 32px 24px; }
@@ -215,4 +395,6 @@
 @media (max-width: 540px) {
   .program-header { flex-direction: column; text-align: center; }
   .program-icon { width: 56px; height: 56px; font-size: 1.8rem; }
+  .curriculum-item { flex-direction: column; gap: 8px; }
+  .curriculum-number { align-self: flex-start; }
 }

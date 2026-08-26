@@ -12,6 +12,7 @@ import emailjs from '@emailjs/browser';
 export class CoursesComponent {
   @ViewChild('embaixadoresForm') embaixadoresForm!: ElementRef<HTMLFormElement>;
   @ViewChild('academiaForm') academiaForm!: ElementRef<HTMLFormElement>;
+  @ViewChild('formacaoForm') formacaoForm!: ElementRef<HTMLFormElement>;
 
   sendingEmbaixadores = false;
   sentEmbaixadores = false;
@@ -20,6 +21,12 @@ export class CoursesComponent {
   sendingAcademia = false;
   sentAcademia = false;
   errorAcademia = false;
+
+  sendingFormacao = false;
+  sentFormacao = false;
+  errorFormacao = false;
+
+  curriculumOpen = false;
 
   embaixadores = {
     nome: '',
@@ -36,6 +43,14 @@ export class CoursesComponent {
     email: '',
     whatsapp: '',
     igreja: '',
+  };
+
+  formacao = {
+    nome: '',
+    email: '',
+    whatsapp: '',
+    igreja: '',
+    cidade: '',
   };
 
   sendEmbaixadores() {
@@ -99,6 +114,38 @@ export class CoursesComponent {
         () => {
           this.sendingAcademia = false;
           this.errorAcademia = true;
+        }
+      );
+  }
+
+  sendFormacao() {
+    if (this.sendingFormacao) return;
+    this.sendingFormacao = true;
+    this.sentFormacao = false;
+    this.errorFormacao = false;
+
+    emailjs
+      .send('service_a2etvgi', 'template_2ppjn0a', {
+        user_name: this.formacao.nome,
+        user_email: this.formacao.email,
+        subject: 'Inscrição — Curso de Formação Missionária',
+        message: [
+          `Nome: ${this.formacao.nome}`,
+          `Cidade: ${this.formacao.cidade}`,
+          `WhatsApp: ${this.formacao.whatsapp}`,
+          `E-mail: ${this.formacao.email}`,
+          `Igreja: ${this.formacao.igreja}`,
+        ].join('\n'),
+      }, { publicKey: '5hCqPusZna0ARKthq' })
+      .then(
+        () => {
+          this.sendingFormacao = false;
+          this.sentFormacao = true;
+          this.formacao = { nome: '', email: '', whatsapp: '', igreja: '', cidade: '' };
+        },
+        () => {
+          this.sendingFormacao = false;
+          this.errorFormacao = true;
         }
       );
   }
