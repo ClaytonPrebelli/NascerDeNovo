@@ -18,8 +18,8 @@ export class SupportersComponent {
   filter: 'all' | 'pessoa' | 'empresa' = 'all';
 
   supporters: Supporter[] = [
-    { name: 'Imobiliária Mouzinho', type: 'empresa', since: '2020' },
-    { name: 'SL Engenharia', type: 'empresa', since: '2021' },
+    { name: 'Imobiliária Mouzinho', type: 'empresa', since: '1999' },
+    { name: 'SL Engenharia', type: 'empresa', since: '2024' },
    
   ];
 
