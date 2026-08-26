@@ -386,6 +386,33 @@
   }
 }
 
+.professors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.professor-card {
+  padding: 14px 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #1C1C1E;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 0.78rem;
+    color: #6B6B6B;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
 @media (max-width: 968px) {
   .program-content { grid-template-columns: 1fr; gap: 32px; }
   .program-block { padding: 32px 24px; }
